@@ -4,4 +4,15 @@ CTIS 310 001:
 Advanced Computer Programming Spring 2023
 9 May 2023
 
-	For my ctis310finalproject, what I have accomplished is getting the majority of the program's base such as the Car subclass, the ElectricCar and GasolineCar subclasses, and the CarPanel class that extends the CarFX class. The next steps that will draw the final project closer to its completion is mainly inputting code mainly in the CarPanel class such as an empty ArrayList that will be used to add and edit the user's data, Survey question labels, buttons that will act as the add, edit, next, previous, and the calculate actions, as well as creating a method that will calculate the overall score for the car based on the scores given by the user. Depsite the lack of time, the program is not runnable yet nor has it come far as I planned it to. I will do whatever I can and hope that the runnable program will be result in agood grade for end of 3 week. 
+		For my ctis310finalproject, what I have accomplished is 
+	 getting the majority of the program's base such as the 
+	 Car subclass, the ElectricCar and GasolineCar subclasses, and the CarPanel class 
+	 that extends the CarFX class. The next steps that will draw the final project closer to
+	 its completion is mainly inputting code mainly in the CarPanel class such as an empty ArrayList that 
+	 will be used to add and edit the user's data, Survey question labels, buttons that will act as the
+	 add, edit, next, previous, and the calculate actions, as well as creating i
+	 a method that will calculate the overall score for the car 
+	 based on the scores given by the user. 
+	 Depsite the lack of time, the program is not runnable yet 
+	 nor has it come far as I planned it to.
+	 I will do whatever I can and hope that the runnable program will be result in a good grade for end of 3 week. 
