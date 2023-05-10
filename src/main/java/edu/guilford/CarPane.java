@@ -2,9 +2,46 @@ package edu.guilford;
 
 import java.util.ArrayList;
 
-public class CarPane extends CarFX {
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
-    private ArrayList<Car> cars;
+public class CarPane extends Pane {
+
+	private ArrayList<Car> cars;
+
+    private int currentUser = 0;
+    
+
+    // GUI attributes
+        private Label userNameLabel;
+        private Label carTypeLabel;
+        private ChoiceBox carTypeChoiceBox1;
+        private ChoiceBox carTypeChoiceBox2;
+        private Button submitButton;
+        private Button nextButton;
+        private Button previousButton;
+        private Button exitButton;
+        
+        // Image view attributes
+        private ImageView carImageView;
+        private ImageView carImageView2;
+
+
+         carTypeChoiceBox1 = new Label("Gasoline based");
+         carTypeChoiceBox2 = new Label("Electric based");
+        
+    
+
+        
+       
+       
+        // add UI components to carPane
+        
+
+
 
     
 }
