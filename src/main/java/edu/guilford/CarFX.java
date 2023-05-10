@@ -24,8 +24,13 @@ public class CarFX extends Application {
         // Add a label to the root node
         // root.getChildren().add(new Label("Hello World!"));
 
-        ArrayList<CarPane> cars = new ArrayList<CarPane>();
+        ArrayList<Car> cars = new ArrayList<Car>();
+        // Build a loop that fills the Cars Array with new objects
+        for (int i = 0; i < 10; i++) {
+        //    cars.add(new Car()) or cars.add(new Car("make", "model", 2021)) ? 
         
+
+        }
 
         // Instantiate an IndividualPane object and add it to the root node
         root.getChildren().add(new CarPane(cars));

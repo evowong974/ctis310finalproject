@@ -30,15 +30,13 @@ public class CarPane extends Pane {
         private ImageView carImageView2;
 
 
-         carTypeChoiceBox1 = new Label("Gasoline based");
-         carTypeChoiceBox2 = new Label("Electric based");
+        public CarPane(ArrayList<Car> cars) {
+    
+        this.cars = cars;
+        // Instantiate GUI attributes
+        }
         
     
-
-        
-       
-       
-        // add UI components to carPane
         
 
 
