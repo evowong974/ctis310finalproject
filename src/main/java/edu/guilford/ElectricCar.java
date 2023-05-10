@@ -6,7 +6,7 @@ public class ElectricCar extends Car {
     
     // constructor
     public ElectricCar(String make, String model, int year, int batteryCapacity, int batteryRange) {
-        super(make, model, year);
+        super();
         this.batteryCapacity = batteryCapacity;
         this.batteryRange = batteryRange;
     }

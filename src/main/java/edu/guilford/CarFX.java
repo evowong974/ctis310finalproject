@@ -34,7 +34,7 @@ public class CarFX extends Application {
 
         // Instantiate an IndividualPane object and add it to the root node
         root.getChildren().add(new CarPane(cars));
-        scene = new Scene(root, 640, 480);
+        scene = new Scene(root, 700, 500);
         stage.setScene(scene);
         stage.show();
     }

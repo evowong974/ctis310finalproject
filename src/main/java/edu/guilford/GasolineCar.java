@@ -6,7 +6,7 @@ public class GasolineCar extends Car {
     
     // constructor
     public GasolineCar(String make, String model, int year, int fuelCapacity) {
-        super(make, model, year);
+        super();
         this.fuelCapacity = fuelCapacity;
         this.fuelType = fuelType;
     }
