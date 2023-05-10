@@ -27,7 +27,7 @@ public class CarFX extends Application {
         ArrayList<Car> cars = new ArrayList<Car>();
         // Build a loop that fills the Cars Array with new objects
         for (int i = 0; i < 10; i++) {
-        //    cars.add(new Car()) or cars.add(new Car("make", "model", 2021)) ? 
+           cars.add(new Car());
         
 
         }
