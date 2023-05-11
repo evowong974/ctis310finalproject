@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
@@ -17,8 +18,9 @@ public class CarPane extends GridPane {
     
 
     // GUI attributes
-        private Label userNameLabel;
-        private Label carTypeLabel;
+        private Label Question1;
+        private Label followupLabel;
+        private TextField followupText;
         private ChoiceBox <String> carTypeChoiceBox;
         private Button submitButton;
         private Button nextButton;
@@ -32,8 +34,15 @@ public class CarPane extends GridPane {
     
         this.cars = cars;
         // Instantiate GUI attributes
-        userNameLabel = new Label("User: ");
-        carTypeLabel = new Label("Car Type: ");
+        Question1 = new Label("What is your preferable car type? ");
+        followupLabel = new Label("Out of 10, how important is fuel efficiency to you?");
+        followupText = new TextField();
+
+         // set the followup label and text to be disabled
+         followupLabel.setDisable(true);
+        followupText.setDisable(true);
+
+
        // instantiate the choice box
         carTypeChoiceBox = new ChoiceBox<String>();
         carTypeChoiceBox.getItems().add("Gasoline");
@@ -42,6 +51,12 @@ public class CarPane extends GridPane {
         nextButton = new Button("Next");
         previousButton = new Button("Previous");
         editButton = new Button("Edit");
+
+        // set the next button and the previous button to be disabled
+        previousButton = new Button("Previous");
+        nextButton = new Button ("Next");
+        previousButton.setDisable(true);
+        nextButton.setDisable(false);
 
         new ImageView();
         File avatar1 = new File(this.getClass().getResource("/electric_fueled_tesla.jpg")
@@ -55,19 +70,19 @@ public class CarPane extends GridPane {
     //    avatarView1 = new ImageView(avatar1.toURI().toString());
     //     avatarView2 = new ImageView(avatar2.toURI().toString());
         // Add GUI attributes to the pane
-        this.add(userNameLabel, 0, 0);
-        this.add(carTypeLabel, 0, 1);
+        this.add(Question1, 0, 1);
         this.add(carTypeChoiceBox, 1, 1);
-
-        this.add(submitButton, 0, 2);
-        this.add(nextButton, 0, 3);
-        this.add(previousButton, 1, 3);
-        this.add(editButton, 0, 4);
+        this.add(followupLabel, 0, 2);
+        this.add(followupText, 1, 2);
+        this.add(submitButton, 0, 3);
+        this.add(previousButton, 0, 4);
+        this.add(nextButton, 1, 4);
+        this.add(editButton, 2, 4);
 
       // put the avatarView1 on bottom left side of the panel
-        this.add(avatarView1, 0, 5);
+        this.add(avatarView1, 0, 10);
         // put the avatarView2 on bottom right side of the panel
-        this.add(avatarView2, 4, 5);
+        this.add(avatarView2, 4, 10);
 
         // Resize the images
         avatarView1.setFitHeight(200);
@@ -76,7 +91,27 @@ public class CarPane extends GridPane {
         avatarView2.setFitHeight(200);
         avatarView2.setFitWidth(300);
 
+            // Pane border
+            this.setStyle("-fx-border-color: black; -fx-padding: 10px;");
+            // Thicker border
+            this.setStyle("-fx-border-width: 3px; -fx-border-color: black; -fx-padding: 10px;");
+            // Pane background color
+            this.setStyle("-fx-background-color: lightblue; -fx-padding: 10px;");
+            // Pane spacing
+            this.setHgap(10);
+            this.setVgap(10);
 
+            // Event listeners
+            // add a listener to the choice box
+            carTypeChoiceBox.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+                if (newValue.equals("Gasoline")) {
+                    followupLabel.setDisable(false);
+                    followupText.setDisable(false);
+                } else if (newValue.equals("Electric")) {
+                    followupLabel.setDisable(true);
+                    followupText.setDisable(true);
+                }
+            });
 
 
         
