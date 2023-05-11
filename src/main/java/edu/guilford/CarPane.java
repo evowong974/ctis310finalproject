@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,14 +19,18 @@ public class CarPane extends GridPane {
     
 
     // GUI attributes
+        private Label userLabel;
+        private TextField userTextField;
         private Label Question1;
         private Label followupLabel;
-        private TextField followupText;
         private ChoiceBox <String> carTypeChoiceBox;
         private Button submitButton;
         private Button nextButton;
         private Button previousButton;
         private Button editButton; 
+        private Slider slider1;
+        private Slider invisibleSlider;
+        private Slider colorSlider;
 
         private ImageView avatarView1;
         private ImageView avatarView2;
@@ -34,19 +39,52 @@ public class CarPane extends GridPane {
     
         this.cars = cars;
         // Instantiate GUI attributes
+        userLabel = new Label("User: ");
+        userTextField = new TextField();
         Question1 = new Label("What is your preferable car type? ");
         followupLabel = new Label("Out of 10, how important is fuel efficiency to you?");
-        followupText = new TextField();
+  
+        
 
-         // set the followup label and text to be disabled
+         // set the followup label to be disabled
          followupLabel.setDisable(true);
-        followupText.setDisable(true);
+
+
+        // slider from 1 - 10 and add that to the pane with tickmarks 
+            slider1 = new Slider(1, 10, 1);
+            slider1.setShowTickMarks(true);
+            slider1.setShowTickLabels(true);
+            slider1.setMajorTickUnit(1);
+            slider1.setBlockIncrement(1);
+            slider1.setSnapToTicks(true);
+            slider1.setMinorTickCount(0);
+
+            // invisible slider 
+            invisibleSlider = new Slider(0, 255, 100);
+            invisibleSlider.setShowTickMarks(true);
+            invisibleSlider.setShowTickLabels(true);
+            invisibleSlider.setMajorTickUnit(50);
+            invisibleSlider.setBlockIncrement(10);
+            invisibleSlider.setSnapToTicks(true);
+            invisibleSlider.setMinorTickCount(0);
+
+            // color slider
+            colorSlider = new Slider(0, 255, 100);
+            colorSlider.setShowTickMarks(true);
+            colorSlider.setShowTickLabels(true);
+            colorSlider.setMajorTickUnit(50);
+            colorSlider.setBlockIncrement(10);
+            colorSlider.setSnapToTicks(true);
+            colorSlider.setMinorTickCount(0);
+            
 
 
        // instantiate the choice box
         carTypeChoiceBox = new ChoiceBox<String>();
         carTypeChoiceBox.getItems().add("Gasoline");
         carTypeChoiceBox.getItems().add("Electric");
+
+        // instantiate the buttons
         submitButton = new Button("Submit");
         nextButton = new Button("Next");
         previousButton = new Button("Previous");
@@ -70,20 +108,19 @@ public class CarPane extends GridPane {
     //    avatarView1 = new ImageView(avatar1.toURI().toString());
     //     avatarView2 = new ImageView(avatar2.toURI().toString());
         // Add GUI attributes to the pane
+        this.add(userLabel, 0, 0);
+        this.add(userTextField, 1, 0);
         this.add(Question1, 0, 1);
         this.add(carTypeChoiceBox, 1, 1);
         this.add(followupLabel, 0, 2);
-        this.add(followupText, 1, 2);
-        this.add(submitButton, 0, 3);
-        this.add(previousButton, 0, 4);
-        this.add(nextButton, 1, 4);
-        this.add(editButton, 2, 4);
-
+        this.add(slider1, 0, 4);
       // put the avatarView1 on bottom left side of the panel
         this.add(avatarView1, 0, 10);
         // put the avatarView2 on bottom right side of the panel
         this.add(avatarView2, 4, 10);
-
+            this.add(invisibleSlider, 0, 11);
+    // set the color slider to the right of the pane
+            this.add(colorSlider, 4, 11);
         // Resize the images
         avatarView1.setFitHeight(200);
         avatarView1.setFitWidth(300);
@@ -105,20 +142,36 @@ public class CarPane extends GridPane {
             // add a listener to the choice box
             carTypeChoiceBox.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
                 if (newValue.equals("Gasoline")) {
-                    followupLabel.setDisable(false);
-                    followupText.setDisable(false);
-                } else if (newValue.equals("Electric")) {
                     followupLabel.setDisable(true);
-                    followupText.setDisable(true);
+    
+                } else if (newValue.equals("Electric")) {
+                    followupLabel.setDisable(false);
+                    followupLabel.setText("Out of 10, how important you is battery range to you?");
+
                 }
             });
 
+            // Add a listener for the invisible slider
+            invisibleSlider.valueProperty().addListener((v, oldValue, newValue) -> {
+                // invisible mode
+                avatarView1.setOpacity(newValue.doubleValue() / 255);
+                avatarView2.setOpacity(newValue.doubleValue() / 255);
+                
+            });
 
-        
+            // Add a listener for the color slider in rainbow mode using hsb color
+            colorSlider.valueProperty().addListener((v, oldValue, newValue) -> {
+                // rainbow mode
+                double value = colorSlider.getValue();
+                // Set the background color of the pane to the value of the slider using the hsb
+                // color model
+                this.setStyle("-fx-background-color: hsb(" + value + ", 100%, 100%)");
+                // change the color of the label text so it's visible when the background is
+            
+                // do the same for the slider text
+                colorSlider.setStyle("-fx-text-fill: hsb(" + (value + 180) % 360 + ", 100%, 100%)");
 
-       
-
-        }
+        });
         
     
         
@@ -126,4 +179,5 @@ public class CarPane extends GridPane {
 
 
     
+}
 }
